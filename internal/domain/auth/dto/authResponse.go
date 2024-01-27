@@ -16,7 +16,7 @@ func NewAuthResponse(user models.User, accessToken string) AuthResponse {
 		ID:          user.ID,
 		Username:    user.Username,
 		FullName:    user.FullName,
-		CreatedAt:   user.CreateAt.Format("01-02-2006"),
+		CreatedAt:   user.CreatedAt.Format("01-02-2006"),
 		UpdatedAt:   user.UpdatedAt.Format("01-02-2006"),
 		AccessToken: accessToken,
 	}
