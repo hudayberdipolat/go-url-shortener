@@ -9,7 +9,6 @@ type Url struct {
 	VisitedCount int
 	UserID       int
 	CreatedAt    time.Time
-	UpdatedAt    time.Time
 }
 
 func (*Url) TableName() string {
