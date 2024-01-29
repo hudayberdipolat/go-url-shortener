@@ -3,12 +3,18 @@ package routes
 import (
 	"github.com/gofiber/fiber/v2"
 	authConstructor "github.com/hudayberdipolat/go-url-shortener/internal/domain/auth/constructor"
+	GlobalURLConstructor "github.com/hudayberdipolat/go-url-shortener/internal/domain/globalRedirectUrl/constructor"
 	urlConstructor "github.com/hudayberdipolat/go-url-shortener/internal/domain/url/constructor"
 	userConstructor "github.com/hudayberdipolat/go-url-shortener/internal/domain/user/constructor"
 	"github.com/hudayberdipolat/go-url-shortener/internal/middleware"
 )
 
 func Routes(app *fiber.App) {
+
+	// global URL Redirect route
+	app.Get("/:shortURL", GlobalURLConstructor.GlobalURLHandler.RedirectLongURL)
+
+	// api client
 	apiClient := app.Group("/api")
 	//  auth routes
 	authRoute := apiClient.Group("/auth")

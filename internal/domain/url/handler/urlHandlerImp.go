@@ -56,7 +56,7 @@ func (u urlHandlerImp) Create(ctx *fiber.Ctx) error {
 		return ctx.Status(http.StatusBadRequest).JSON(errResponse)
 	}
 
-	if err := u.urlService.CreateUrl(ctx, userID, createRequest); err != nil {
+	if err := u.urlService.CreateUrl(userID, createRequest); err != nil {
 		errResponse := response.Error(http.StatusBadRequest, "short URL can't created", err.Error(), nil)
 		return ctx.Status(http.StatusBadRequest).JSON(errResponse)
 	}

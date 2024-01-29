@@ -2,7 +2,6 @@ package service
 
 import (
 	"errors"
-	"github.com/gofiber/fiber/v2"
 	"github.com/hudayberdipolat/go-url-shortener/internal/domain/url/dto"
 	"github.com/hudayberdipolat/go-url-shortener/internal/domain/url/repository"
 	"github.com/hudayberdipolat/go-url-shortener/internal/models"
@@ -42,10 +41,9 @@ func (u urlServiceImp) GetUrlByID(userID, urlID int) (*dto.UrlResponse, error) {
 	return &urlResponse, err
 }
 
-func (u urlServiceImp) CreateUrl(ctx *fiber.Ctx, userID int, request dto.CreateUrlRequest) error {
+func (u urlServiceImp) CreateUrl(userID int, request dto.CreateUrlRequest) error {
 	// create short url
-	baseUrl := ctx.BaseURL()
-	shortUrl := utils.CreateShortURL(baseUrl, request.LongUrl)
+	shortUrl := utils.CreateShortURL(request.LongUrl)
 	createURL := models.Url{
 		UrlName:      request.UrlName,
 		ShortUrl:     shortUrl,

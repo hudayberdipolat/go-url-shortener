@@ -1,6 +1,9 @@
 package dto
 
-import "github.com/hudayberdipolat/go-url-shortener/internal/models"
+import (
+	"fmt"
+	"github.com/hudayberdipolat/go-url-shortener/internal/models"
+)
 
 type UrlResponse struct {
 	ID           int    `json:"id"`
@@ -15,7 +18,7 @@ func NewUrlResponse(url models.Url) UrlResponse {
 	return UrlResponse{
 		ID:           url.ID,
 		UrlName:      url.UrlName,
-		ShortUrl:     url.ShortUrl,
+		ShortUrl:     fmt.Sprintf("http://localhost:3000/%s", url.ShortUrl),
 		LongUrl:      url.LongUrl,
 		VisitedCount: url.VisitedCount,
 		CreatedAt:    url.CreatedAt.Format("01-02-2006"),
